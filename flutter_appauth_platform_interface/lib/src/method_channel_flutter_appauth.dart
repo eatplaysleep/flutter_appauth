@@ -6,6 +6,7 @@ import 'authorization_token_request.dart';
 import 'authorization_token_response.dart';
 import 'flutter_appauth_platform.dart';
 import 'method_channel_mappers.dart';
+import 'revoke_request.dart';
 import 'token_request.dart';
 import 'token_response.dart';
 
@@ -45,6 +46,11 @@ class MethodChannelFlutterAppAuth extends FlutterAppAuthPlatform {
         result['tokenType'],
         result['authorizationAdditionalParameters']?.cast<String, dynamic>(),
         result['tokenAdditionalParameters']?.cast<String, dynamic>());
+  }
+
+  @override
+  Future<void> revoke(RevokeRequest request) async {
+    await _channel.invokeMethod('revoke', request.toMap());
   }
 
   @override

@@ -4,6 +4,7 @@ import 'authorization_service_configuration.dart';
 import 'authorization_token_request.dart';
 import 'common_request_details.dart';
 import 'grant_types.dart';
+import 'revoke_request.dart';
 import 'token_request.dart';
 
 Map<String, Object?> _convertCommonRequestDetailsToMap(
@@ -47,6 +48,15 @@ extension AuthorizationTokenRequestMapper on AuthorizationTokenRequest {
   Map<String, Object?> toMap() {
     return _convertTokenRequestToMap(this)
       ..addAll(_convertAuthorizationParametersToMap(this));
+  }
+}
+
+extension RevokeRequestMapper on RevokeRequest {
+  Map<String, Object?> toMap() {
+    return <String, Object>{
+      'idTokenHint': this.idTokenHint,
+      'logoutRedirectUrl': this.logoutRedirectUrl,
+    };
   }
 }
 

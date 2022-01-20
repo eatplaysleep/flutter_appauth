@@ -16,4 +16,9 @@ class FlutterAppAuth {
   Future<TokenResponse?> token(TokenRequest request) {
     return FlutterAppAuthPlatform.instance.token(request);
   }
+
+  /// For revoking tokens
+  Future<RevokeResponse?> revoke(RevokeRequest request) {
+    return FlutterAppAuthPlatform.instance.revoke(request);
+  }
 }
